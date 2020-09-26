@@ -1,0 +1,14 @@
+<!--  EXAMPLE Request used in postman to get data from given country  -->
+<!--  POST: http://localhost:8080/soap-ws  -->
+<!--  Header-key: Content-Type - Header-value: text/xml  -->
+<!--  Body:  -->
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:gs="http://spring.io/guides/gs-producing-web-service">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <gs:getCountryRequest>
+            <gs:name>Belgium</gs:name>
+        </gs:getCountryRequest>
+    </soapenv:Body>
+</soapenv:Envelope>
