@@ -50,7 +50,7 @@ public class CountryEndpoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "deleteCountryRequest")
     @ResponsePayload
     public DeleteCountryResponse deleteCountry(@RequestPayload DeleteCountryRequest request) {
-        CountryRepository.CountryDeleteStatus status = countryRepository.deleteCountry(request.getName());
+        CountryRepository.Status status = countryRepository.deleteCountry(request.getName());
 
         DeleteCountryResponse response = new DeleteCountryResponse();
         response.setStatus(mapStatus(status));
@@ -62,11 +62,24 @@ public class CountryEndpoint {
         return response;
     }
 
-    private Status mapStatus(CountryRepository.CountryDeleteStatus status) {
-        if(status== CountryRepository.CountryDeleteStatus.FAILURE){
-            return Status.FAILURE;
+    private Status mapStatus(CountryRepository.Status status) {
+        if(status== CountryRepository.Status.FAILURE){
+            return io.spring.guides.gs_producing_web_service.Status.FAILURE;
         }
-        return Status.SUCCES;
+        return io.spring.guides.gs_producing_web_service.Status.SUCCES;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addCountryRequest")
+    @ResponsePayload
+    public AddCountryResponse addCountry(@RequestPayload AddCountryRequest request) {
+        CountryRepository.Status status = countryRepository.addCountry(request.getCountry());
+
+        countryRepository.addCountry(request.getCountry());
+
+        AddCountryResponse response = new AddCountryResponse();
+        response.setStatus(mapStatus(status));
+
+        return response;
     }
 
 }

@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="country" type="{http://spring.io/guides/gs-producing-web-service}country"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "name"
+    "country"
 })
-@XmlRootElement(name = "deleteCountryRequest")
-public class DeleteCountryRequest {
+@XmlRootElement(name = "addCountryRequest")
+public class AddCountryRequest {
 
     @XmlElement(required = true)
-    protected String name;
+    protected Country country;
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the country property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Country }
      *     
      */
-    public String getName() {
-        return name;
+    public Country getCountry() {
+        return country;
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the country property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Country }
      *     
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setCountry(Country value) {
+        this.country = value;
     }
 
 }

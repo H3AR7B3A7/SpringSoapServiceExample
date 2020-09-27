@@ -13,7 +13,7 @@ public class CountryRepository {
 
     private static final Map<String, Country> countries = new HashMap<>();
 
-    public enum CountryDeleteStatus {
+    public enum Status {
         SUCCESS, FAILURE;
     }
 
@@ -70,12 +70,23 @@ public class CountryRepository {
         return countries;
     }
 
-    public CountryDeleteStatus deleteCountry(String name){
+    public Status deleteCountry(String name){
         Assert.notNull(name, "The country's name must not be null");
         if (countries.containsKey(name)){
             countries.remove(name);
-            return CountryDeleteStatus.SUCCESS;
+            return Status.SUCCESS;
         }
-        return CountryDeleteStatus.FAILURE;
+        return Status.FAILURE;
+    }
+
+    public Status addCountry(Country country){
+        if(countries.containsKey(country.getName())){
+            return Status.FAILURE;
+        }
+        Assert.notNull(country.getName(), "Country name required");
+        Assert.notNull(country.getCapital(), "Country capital required");
+        Assert.notNull(country.getCurrency(), "Country currency required");
+        countries.put(country.getName(), country);
+        return Status.SUCCESS;
     }
 }
