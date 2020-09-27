@@ -19,6 +19,52 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="deleteCountryRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteCountryResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="status" type="tns:status"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="status">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SUCCES"/>
+            <xs:enumeration value="FAILURE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+<!--    <xs:element name="getAllCountriesRequest">-->
+<!--        <xs:complexType/>-->
+<!--    </xs:element>-->
+
+<!--    <xs:complexType name="getAllCountriesResponse">-->
+<!--        <xs:sequence>-->
+<!--            <xs:element name="Map">-->
+<!--                <xs:complexType>-->
+<!--                    <xs:sequence>-->
+<!--                        <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">-->
+<!--                            <xs:complexType>-->
+<!--                                <xs:sequence>-->
+<!--                                    <xs:element minOccurs="0" name="key" type="xs:string"/>-->
+<!--                                    <xs:element minOccurs="0" name="value" type="xs:string"/>-->
+<!--                                </xs:sequence>-->
+<!--                            </xs:complexType>-->
+<!--                        </xs:element>-->
+<!--                    </xs:sequence>-->
+<!--                </xs:complexType>-->
+<!--            </xs:element>-->
+<!--        </xs:sequence>-->
+<!--    </xs:complexType>-->
+
     <xs:complexType name="country">
         <xs:sequence>
             <xs:element name="name" type="xs:string"/>

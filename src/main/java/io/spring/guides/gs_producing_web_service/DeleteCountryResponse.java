@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -25,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="country" type="{http://spring.io/guides/gs-producing-web-service}country"/&gt;
+ *         &lt;element name="status" type="{http://spring.io/guides/gs-producing-web-service}status"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,36 +37,37 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "country"
+    "status"
 })
-@XmlRootElement(name = "getCountryResponse")
-public class GetCountryResponse {
+@XmlRootElement(name = "deleteCountryResponse")
+public class DeleteCountryResponse {
 
     @XmlElement(required = true)
-    protected Country country;
+    @XmlSchemaType(name = "string")
+    protected Status status;
 
     /**
-     * Gets the value of the country property.
+     * Gets the value of the status property.
      * 
      * @return
      *     possible object is
-     *     {@link Country }
+     *     {@link Status }
      *     
      */
-    public Country getCountry() {
-        return country;
+    public Status getStatus() {
+        return status;
     }
 
     /**
-     * Sets the value of the country property.
+     * Sets the value of the status property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Country }
+     *     {@link Status }
      *     
      */
-    public void setCountry(Country value) {
-        this.country = value;
+    public void setStatus(Status value) {
+        this.status = value;
     }
 
 }

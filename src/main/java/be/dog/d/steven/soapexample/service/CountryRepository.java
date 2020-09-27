@@ -13,6 +13,10 @@ public class CountryRepository {
 
     private static final Map<String, Country> countries = new HashMap<>();
 
+    public enum CountryDeleteStatus {
+        SUCCESS, FAILURE;
+    }
+
     @PostConstruct
     public void init() {
 
@@ -60,5 +64,18 @@ public class CountryRepository {
     public Country findCountry(String name) {
         Assert.notNull(name, "The country's name must not be null");
         return countries.get(name);
+    }
+
+    public Map<String, Country> findAllCountries() {
+        return countries;
+    }
+
+    public CountryDeleteStatus deleteCountry(String name){
+        Assert.notNull(name, "The country's name must not be null");
+        if (countries.containsKey(name)){
+            countries.remove(name);
+            return CountryDeleteStatus.SUCCESS;
+        }
+        return CountryDeleteStatus.FAILURE;
     }
 }
